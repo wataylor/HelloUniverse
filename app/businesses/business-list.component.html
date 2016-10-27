@@ -30,7 +30,7 @@
           </tr>
         </thead>
         <tbody>
-         <tr *ngFor='let business of businesses | businessFilter:[titleFilter]'>
+         <tr *ngFor='let business of businesses | businessFilter:[titleFilter,descFilter]'>
          <td>{{ business.businessUnitTitle }}</td>
          <td>{{ business.businessUnitDescription}}</td>
 	</tbody>
