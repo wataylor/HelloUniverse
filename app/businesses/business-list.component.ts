@@ -3,10 +3,12 @@ import { Component, OnInit }  from '@angular/core';
 /* These imports are relative to the current directory.  The extension
  * .ts is assumed.  To import an interface IBusiness */
 import { IBusiness } from './business';
+import { BusinessService } from './business.service';
 
-/* URLs are relative to index.html.  styleUrls is an array of URLs. */
+/* URLs are relative to index.html.  styleUrls is an array of URLs.
+ * No selector is needed because this component is displayed via a
+ * route. */
 @Component({
-    selector: 'rt-businesses',
     templateUrl: 'app/businesses/business-list.component.html',
     styleUrls: ['app/businesses/business-list.component.css']
 })
@@ -15,8 +17,15 @@ export class BusinessListComponent implements OnInit {
     titleFilter: string;
     descFilter: string;
     errorMessage: string;
-    businesses: IBusiness[] = [{"uUID":"BU001","owningBusUnitID":"","modified":"2016-10-13 21:21:30.0","modifiedByID":"USR10","created":0,"createdByID":"USR10","businessUnitParentID":"","businessUnitTitle":"Title","businessUnitDescription":"Description","businessUnitContactID":"USR01"},{"uUID":"BU002","owningBusUnitID":"BU001","modified":"2016-10-22 17:53:11.0","modifiedByID":"USR10","created":0,"createdByID":"USR10","businessUnitParentID":"","businessUnitTitle":"Sub-Unit Title","businessUnitDescription":"Sub-Unit Description","businessUnitContactID":"USR01"}]
+    businesses: IBusiness[];
+
+    constructor(private _businessService: BusinessService) {}
+
     ngOnInit(): void {
-      console.log("onInit");
+      this._businessService.getBusinesses()
+        .subscribe(
+           businesses => this.businesses = businesses,
+           error => this.errorMessage = <any>error
+         );
     }
 }

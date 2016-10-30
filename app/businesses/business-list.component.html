@@ -31,7 +31,8 @@
         </thead>
         <tbody>
          <tr *ngFor='let business of businesses | businessFilter:[titleFilter,descFilter]'>
-         <td>{{ business.businessUnitTitle }}</td>
+         <td><a [routerLink]="['/business', business.uUID]">
+              {{ business.businessUnitTitle }}</a></td>
          <td>{{ business.businessUnitDescription}}</td>
 	</tbody>
       </table>
