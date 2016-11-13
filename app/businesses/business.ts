@@ -6,8 +6,8 @@ export interface IBusiness {
   modifiedByID: string;
   created: number;
   createdByID: string;
-  businessUnitParentID: string;
-  businessUnitTitle: string;
-  businessUnitDescription: string;
-  businessUnitContactID: string;
+  parentID: string;
+  title: string;
+  description: string;
+  contactID: string;
 }

@@ -33,8 +33,6 @@ export class BusinessService {
       .map((businesses: IBusiness[]) => businesses.find(b => b.uUID == id));
   }
 
-//    return [{"uUID":"BU001","owningBusUnitID":"","modified":"2016-10-13 21:21:30.0","modifiedByID":"USR10","created":0,"createdByID":"USR10","businessUnitParentID":"","businessUnitTitle":"Title","businessUnitDescription":"Description","businessUnitContactID":"USR01"},{"uUID":"BU002","owningBusUnitID":"BU001","modified":"2016-10-22 17:53:11.0","modifiedByID":"USR10","created":0,"createdByID":"USR10","businessUnitParentID":"","businessUnitTitle":"Sub-Unit Title","businessUnitDescription":"Sub-Unit Description","businessUnitContactID":"USR01"}];
-
   private handleGetsError(error: Response) {
     console.error(error);
     return Observable.throw(error.json().error || 'Server error');

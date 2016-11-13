@@ -19,6 +19,8 @@ export class BusinessDetailComponent implements OnInit {
     pageTitle: string = 'Business Detail';
     business: IBusiness;
     errorMessage: string;
+    active: boolean = true;
+    submitted:boolean = false;
     private sub: Subscription;
 
     constructor(private _route: ActivatedRoute,
@@ -46,4 +48,17 @@ export class BusinessDetailComponent implements OnInit {
     onBack(): void {
         this._router.navigate(['/businesses']);
     }
+
+    onSubmit(): void {
+        this.submitted = true;
+    }
+
+    /* The form has a *ngIf on active.  Setting active flase and the
+     * true again removes the form from teh DOM and makes a new one
+     * with all variables in the pristine stste.*/
+    newHero(): void {
+    this.business = new Business();
+    this.active = false;
+    setTimeout(() => this.active = true, 0);
+  }
 }

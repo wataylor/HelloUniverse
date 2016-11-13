@@ -1,7 +1,36 @@
 <div class='panel panel-primary' *ngIf='business' >
   <div class='panel-heading'>
-    {{ pageTitle + ': ' + business.businessUnitTitle }}
+    {{ pageTitle + ': ' + business.title }}
   </div>
+   <div  [hidden]="submitted">
+  <form  *ngIf="active" (ngSubmit)="onSubmit()" #businessForm="ngForm">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" id="title" required
+             [(ngModel)]="business.title" name="title">
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input type="text" class="form-control" id="description" required
+             [(ngModel)]="business.description" name="description">
+    </div>
+    <button type="submit" class="btn btn-default"
+            [disabled]="!businessForm.form.valid">Submit</button>
+  </form>
+  </div>
+<div [hidden]="!submitted">
+  <h2>You submitted this:</h2>
+  <div class="row">
+    <div class="col-xs-3">Title</div>
+    <div class="col-xs-9  pull-left">{{ business.title }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Description</div>
+    <div class="col-xs-9 pull-left">{{ business.description }}</div>
+  </div>
+  <br>
+  <button class="btn btn-default" (click)="submitted=false">Edit</button>
+</div>
   <div class='panel-footer'>
       <a class='btn btn-default' (click)='onBack()' style='width:80px'>
           <i class='glyphicon glyphicon-chevron-left'></i> Back

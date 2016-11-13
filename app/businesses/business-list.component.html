@@ -25,15 +25,15 @@
       <table class='table' *ngIf='businesses && businesses.length'>
         <thead>
           <tr>
-            <th>Title</th>
+            <th>Title (click to edit)</th>
             <th>Description</th>
           </tr>
         </thead>
         <tbody>
          <tr *ngFor='let business of businesses | businessFilter:[titleFilter,descFilter]'>
          <td><a [routerLink]="['/business', business.uUID]">
-              {{ business.businessUnitTitle }}</a></td>
-         <td>{{ business.businessUnitDescription}}</td>
+              {{ business.title }}</a></td>
+         <td>{{ business.description}}</td>
 	</tbody>
       </table>
     </div>
