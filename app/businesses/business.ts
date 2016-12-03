@@ -9,5 +9,6 @@ export interface IBusiness {
   parentID: string;
   title: string;
   description: string;
-  contactID: string;
+  assigneeID: string;
+  assigedByID: string;
 }
