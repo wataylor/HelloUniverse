@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
@@ -8,29 +7,20 @@ import { RouterModule } from '@angular/router';
 import { AppComponent }  from './app.component';
 import { WelcomeComponent }  from './home/welcome.component';
 
-import { BusinessListComponent }  from './businesses/business-list.component';
-import { BusinessDetailComponent }  from './businesses/business-detail.component';
-import { BusinessDetailGuard }  from './businesses/business-guard.service';
-import { BusinessFilterPipe }  from './businesses/business-filter.pipe';
+import { BusinessModule } from './businesses/business.module';
 
 @NgModule({
-  imports: [ BrowserModule, FormsModule, HttpModule,
+  imports: [ BrowserModule, HttpModule,
     RouterModule.forRoot([
-      { path: 'businesses', component: BusinessListComponent },
-      { path: 'business/:id',
-        canActivate: [ BusinessDetailGuard ],
-        component: BusinessDetailComponent },
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
     ]),
+    BusinessModule
   ],
-  providers: [ BusinessDetailGuard ],
   declarations: [ AppComponent,
-     WelcomeComponent,
-     BusinessListComponent,
-     BusinessDetailComponent,
-     BusinessFilterPipe ],
+     WelcomeComponent
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

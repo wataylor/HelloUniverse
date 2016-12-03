@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 
-import { BusinessService } from './businesses/business.service';
-
 @Component({
     selector: 'rt-app',
     template: `
@@ -20,7 +18,7 @@ import { BusinessService } from './businesses/business.service';
         </div>
      </div>
     `,
-    providers: [BusinessService]
+    providers: []
 })
 export class AppComponent {
   pageTitle: string = 'Risk Trak Risk Management';

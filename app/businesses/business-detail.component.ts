@@ -53,11 +53,11 @@ export class BusinessDetailComponent implements OnInit {
         this.submitted = true;
     }
 
-    /* The form has a *ngIf on active.  Setting active flase and the
-     * true again removes the form from teh DOM and makes a new one
-     * with all variables in the pristine stste.*/
-    newHero(): void {
-    this.business = new Business();
+    /* The form has a *ngIf on active.  Setting active false and then
+     * true again removes the form from the DOM and makes a new one
+     * with all variables in the pristine state.*/
+    newBusiness(): void {
+    // this.business = new IBusiness();
     this.active = false;
     setTimeout(() => this.active = true, 0);
   }
